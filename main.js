@@ -1,4 +1,5 @@
 const loadCatagories = () => {
+    loadAll()
    fetch("https://openapi.programming-hero.com/api/categories")  
    .then((res) => res.json())
    .then((data) => displayCatagories(data.categories))
@@ -21,7 +22,16 @@ const loadModal = async(id) => {
    displayModal(details.plants.find(tree => tree.id == id))
 } 
 
-
+const loadSpiner = (status) => {
+    if(status == true){
+        document.getElementById("spiner").classList.remove("hidden")
+        document.getElementById("main-card").classList.add("hidden")
+    }
+    else{
+        document.getElementById("main-card").classList.remove("hidden")
+        document.getElementById("spiner").classList.add("hidden")
+    }
+}
 
 const displayModal = (plant) => {
   const detailsBox = document.getElementById("details-container")
